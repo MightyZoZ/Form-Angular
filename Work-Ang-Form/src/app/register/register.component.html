@@ -1,0 +1,45 @@
+<div class="register-container">
+    <h2>Register</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" formControlName="firstName" />
+      <p class="error" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+        First name is required (Min: 3 letters).
+      </p>
+  
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName" />
+      <p class="error" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+        Last name is required (Min: 3 letters).
+      </p>
+  
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" formControlName="phone" />
+      <p class="error" *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+        Enter a valid phone number.
+      </p>
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" />
+      <p class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        Enter a valid email address.
+      </p>
+  
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" />
+      <p class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Password must be numbers only.
+      </p>
+  
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" />
+      <p class="error" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+        Passwords do not match.
+      </p>
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>
+  
